@@ -3,3 +3,5 @@ langchain
 stramlit
 python-donenv
 PyPDF2
+
+-e .
