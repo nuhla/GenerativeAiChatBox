@@ -20,6 +20,50 @@ load_dotenv()
 #---------- Access the enviroment variable  ----------------#
 key = os.getenv("KEY")
 
+RESPONSE_JSON ={
+    "1":{
+        "mcq":"multiple choice question",
+        "option":{
+            "a":"choice here ",
+            "b":"choice here ",
+            "c":"choice here ",
+            "d":"choice here ",
+                 },
+        "correct":"correct answer",
+            },
+    "2":{
+        "mcq":"multiple choice question",
+        "option":{
+            "a":"choice here ",
+            "b":"choice here ",
+            "c":"choice here ",
+            "d":"choice here ",
+                 },
+        "correct":"correct answer",
+            },
+    "3":{
+        "mcq":"multiple choice question",
+        "option":{
+            "a":"choice here ",
+            "b":"choice here ",
+            "c":"choice here ",
+            "d":"choice here ",
+                 },
+        "correct":"correct answer",
+            },
+    "4":{
+        "mcq":"multiple choice question",
+        "option":{
+            "a":"choice here ",
+            "b":"choice here ",
+            "c":"choice here ",
+            "d":"choice here ",
+                 },
+        "correct":"correct answer",
+            },
+
+}
+
 llm= ChatOpenAI(openai_api_key = key, model_name = "gtp-3.5-terbu", temperature=.7)
 
 TEMPLATE="""
@@ -64,8 +108,3 @@ review_Chian = LLMChain(llm=llm, prompt=quiz_evaluation_prompt , output_key="rev
 BOOT = SequentialChain(chains=[quize_chain, review_Chian], input_variables=["text", "numbers", "subject", "tone", "response_json"],
                        output_variables=["quiz", "review"],verbose=True)
 
-fil_path="../data.txt"
-with open (fil_path, "r") as file:
-    text = file.read()
-
-print(text)
